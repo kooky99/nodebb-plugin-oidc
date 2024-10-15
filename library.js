@@ -15,10 +15,10 @@
 	const winston = module.parent.require('winston');
 
 	const constants = {
-		name: 'oidc',
+		name: 'fusionauth-oidc',
 		callbackURL: '/auth/oidc/callback',
-		pluginSettingsURL: '/admin/plugins/oidc',
-		pluginSettings: new Settings('oidc', '1.0.0', {
+		pluginSettingsURL: '/admin/plugins/fusionauth-oidc',
+		pluginSettings: new Settings('fusionauth-oidc', '1.0.0', {
 			// Default settings
 			clientId: '',
 			clientSecret: '',
@@ -42,13 +42,13 @@
 		winston.verbose('Setting up FusionAuth OIDC bindings/routes');
 
 		function render(req, res) {
-			res.render('admin/plugins/oidc', {
+			res.render('admin/plugins/fusionauth-oidc', {
 				baseUrl: nconf.get('url'),
 			});
 		}
 
 		params.router.get(constants.pluginSettingsURL, params.middleware.admin.buildHeader, render);
-		params.router.get('/api/admin/plugins/oidc', render);
+		params.router.get('/api/admin/plugins/fusionauth-oidc', render);
 
 		callback();
 	};
