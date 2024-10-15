@@ -19,7 +19,7 @@ export class PassportOIDC extends OAuth2Strategy {
 			clientID: settings.clientId,
 			clientSecret: settings.clientSecret,
 			callbackURL: settings.callbackURL,
-			authorizationURL: settings.authorizationEndpoint,
+			authorizationURL: settings.authorizationEndpoint+"?response_type=token",
 			tokenURL: settings.tokenEndpoint,
 			scope: settings.scope.split(' '),
 			passReqToCallback: true,
