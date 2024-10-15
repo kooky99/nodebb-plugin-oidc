@@ -15,7 +15,7 @@
 	const winston = module.parent.require('winston');
 
 	const constants = {
-		name: 'oidc',
+		name: 'fusionauth-oidc',
 		callbackURL: '/auth/oidc/callback',
 		pluginSettingsURL: '/admin/plugins/fusionauth-oidc',
 		pluginSettings: new Settings('fusionauth-oidc', '1.0.0', {
