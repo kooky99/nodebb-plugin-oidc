@@ -19,7 +19,7 @@ export class PassportOIDC extends OAuth2Strategy {
 			clientID: settings.clientId,
 			clientSecret: settings.clientSecret,
 			callbackURL: settings.callbackURL,
-			authorizationURL: settings.authorizationEndpoint+"?response_type=token",
+			authorizationURL: settings.authorizationEndpoint,
 			tokenURL: settings.tokenEndpoint,
 			scope: settings.scope.split(' '),
 			passReqToCallback: true,
@@ -60,6 +60,13 @@ export class PassportOIDC extends OAuth2Strategy {
 				done(new Error(`Failed to parse the userinfo body. Exception was previously logged.`));
 			}
 		});
+	}
+
+	authorizationParams(options) {
+		return {
+			response_type: 'token',
+			...options
+		};
 	}
 }
 
