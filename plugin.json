@@ -1,8 +1,8 @@
 {
-  "id": "nodebb-plugin-fusionauth-oidc",
+  "id": "nodebb-plugin-oidc",
   "name": "OpenID Connect Plugin for NodeBB",
   "description": "Authenticate to FusionAuth or any OpenID Connect identity provider.",
-  "url": "https://github.com/FusionAuth/nodebb-plugin-fusionauth-oidc",
+  "url": "https://github.com/kooky99/nodebb-plugin-oidc",
   "library": "./library.js",
   "templates": "templates",
   "hooks": [
@@ -29,13 +29,9 @@
     {
       "hook": "action:settings.set",
       "method": "bindStrategy"
-    },
-    {
-      "hook": "filter:user.logout",
-      "method": "redirectLogout"
     }
   ],
   "modules": {
-    "../admin/plugins/fusionauth-oidc.js": "static/lib/admin.js"
+    "../admin/plugins/oidc.js": "static/lib/admin.js"
   }
 }

@@ -8,11 +8,6 @@
 				<p>
 					Configure NodeBB to authenticate using an OpenID Connect identity provider.
 				</p>
-				<p>
-					Check the GitHub project
-					<a href="https://github.com/FusionAuth/nodebb-plugin-fusionauth-oidc">README</a> for additional
-					information.
-				</p>
 				<form class="mt-3" id="fusionauth-oidc-settings" role="form">
 					<div class="mb-2">
 						<label class="form-label" for="client_id">Client Id</label>
@@ -40,8 +35,8 @@
 						<input class="form-control" data-trim="true" id="user_info_endpoint" name="userInfoEndpoint" type="text">
 					</div>
 					<div class="mb-2">
-						<label class="form-label" for="user_info_endpoint">Logout endpoint</label>
-						<input class="form-control" data-trim="true" id="logout_endpoint" name="logoutEndpoint" type="text">
+						<label class="form-label" for="scope">Scope</label>
+						<input class="form-control" data-trim="true" id="scope" name="scope" type="text">
 					</div>
 					<div class="mb-2">
 						<label class="form-label" for="email_claim">Email claim</label>
@@ -57,7 +52,7 @@
 						<img src="https://fusionauth.io/img/favicon.png" alt="FusionAuth" class="w-100">
 					</div>
 					<div>
-						Maintained by <a href="https://fusionauth.io">FusionAuth</a> <br>
+						Forked from <a href="https://fusionauth.io">FusionAuth</a> <br>
 						<a href="https://github.com/FusionAuth/nodebb-plugin-fusionauth-oidc" target="_blank"
 						   rel="noopener">
 							https://github.com/FusionAuth/nodebb-plugin-fusionauth-oidc

@@ -51,7 +51,7 @@ export function init() {
         updateField('input[name="authorizationEndpoint"]', json.authorization_endpoint);
         updateField('input[name="tokenEndpoint"]', json.token_endpoint);
         updateField('input[name="userInfoEndpoint"]', json.userinfo_endpoint);
-        updateField('input[name="logoutEndpoint"]', json.end_session_endpoint);
+        //updateField('input[name="logoutEndpoint"]', json.end_session_endpoint);
         saveForm(form);
       })
       .catch((e) => {

@@ -15,10 +15,10 @@
 	const winston = module.parent.require('winston');
 
 	const constants = {
-		name: 'fusionauth-oidc',
-		callbackURL: '/auth/fusionauth-oidc/callback',
-		pluginSettingsURL: '/admin/plugins/fusionauth-oidc',
-		pluginSettings: new Settings('fusionauth-oidc', '1.0.0', {
+		name: 'oidc',
+		callbackURL: '/auth/oidc/callback',
+		pluginSettingsURL: '/admin/plugins/oidc',
+		pluginSettings: new Settings('oidc', '1.0.0', {
 			// Default settings
 			clientId: '',
 			clientSecret: '',
@@ -27,6 +27,7 @@
 			authorizationEndpoint: '',
 			tokenEndpoint: '',
 			userInfoEndpoint: '',
+			scope: 'openid email profile offline_access',
 		}, false, false),
 	};
 
@@ -41,13 +42,13 @@
 		winston.verbose('Setting up FusionAuth OIDC bindings/routes');
 
 		function render(req, res) {
-			res.render('admin/plugins/fusionauth-oidc', {
+			res.render('admin/plugins/oidc', {
 				baseUrl: nconf.get('url'),
 			});
 		}
 
 		params.router.get(constants.pluginSettingsURL, params.middleware.admin.buildHeader, render);
-		params.router.get('/api/admin/plugins/fusionauth-oidc', render);
+		params.router.get('/api/admin/plugins/oidc', render);
 
 		callback();
 	};
@@ -76,7 +77,8 @@
 				!settings.emailClaim ||
 				!settings.authorizationEndpoint ||
 				!settings.tokenEndpoint ||
-				!settings.userInfoEndpoint) {
+				!settings.userInfoEndpoint ||
+				!settings.scope) {
 				winston.info('OpenID Connect will not be available until it is configured!');
 				return callback(null, strategies);
 			}
@@ -89,7 +91,7 @@
 				const isAdmin = settings.rolesClaim ? (profile[settings.rolesClaim] === 'admin' || (profile[settings.rolesClaim] && profile[settings.rolesClaim].some && profile[settings.rolesClaim].some((value) => value === 'admin'))) : false;
 				Oidc.login({
 					oAuthid: profile.sub,
-					username: profile.preferred_username || email.split('@')[0],
+					username: profile.name || email.split('@')[0],
 					email: email,
 					rolesEnabled: settings.rolesClaim && settings.rolesClaim.length !== 0,
 					isAdmin: isAdmin,
@@ -110,7 +112,7 @@
 					url: '/auth/' + constants.name,
 					callbackURL: '/auth/' + constants.name + '/callback',
 					icon: 'fa-openid',
-					scope: ['openid', settings.emailClaim],
+					scope: settings.split(' '),
 				});
 			}
 
@@ -230,6 +232,7 @@
 		callback(null, header);
 	};
 
+	/*
 	Oidc.redirectLogout = function (payload, callback) {
 		const settings = constants.pluginSettings.getWrapper();
 
@@ -246,6 +249,7 @@
 
 		return callback(null, payload);
 	};
+	*/
 
 	module.exports = Oidc;
 })(module);
