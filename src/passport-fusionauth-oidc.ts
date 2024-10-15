@@ -23,6 +23,7 @@ export class PassportOIDC extends OAuth2Strategy {
 			tokenURL: settings.tokenEndpoint,
 			scope: settings.scope.split(' '),
 			passReqToCallback: true,
+			skipUserProfile: true,
 		}, verifyFunction);
 	}
 
