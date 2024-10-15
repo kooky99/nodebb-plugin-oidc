@@ -112,7 +112,7 @@
 					url: '/auth/' + constants.name,
 					callbackURL: '/auth/' + constants.name + '/callback',
 					icon: 'fa-openid',
-					scope: settings.split(' '),
+					scope: settings.scope.split(' '),
 				});
 			}
 
