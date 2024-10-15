@@ -15,7 +15,7 @@
 	const winston = module.parent.require('winston');
 
 	const constants = {
-		name: 'fusionauth-oidc',
+		name: 'oidc',
 		callbackURL: '/auth/oidc/callback',
 		pluginSettingsURL: '/admin/plugins/fusionauth-oidc',
 		pluginSettings: new Settings('fusionauth-oidc', '1.0.0', {
@@ -110,8 +110,16 @@
 				strategies.push({
 					name: constants.name,
 					url: '/auth/' + constants.name,
-					callbackURL: '/auth/' + constants.name + '/callback',
+					callbackURL: constants.callbackURL,
 					icon: 'fa-openid',
+					icons: {
+						normal: 'fa fa-openid',
+						square: 'fa fa-openid',
+					},
+					labels: {
+						login: 'OIDC Log In',
+						register: 'OIDC Register',
+					},
 					scope: settings.scope.split(' '),
 				});
 			}
