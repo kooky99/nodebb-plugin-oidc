@@ -97,6 +97,7 @@
 					isAdmin: isAdmin,
 				}, (err, user) => {
 					if (err) {
+						console.info("bindStrategy profile: ", profile)
 						return callback(err);
 					}
 
