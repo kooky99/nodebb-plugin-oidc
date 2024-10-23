@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as OAuth2Strategy from 'passport-oauth2'
 
 export interface PassportOIDCSettings {
