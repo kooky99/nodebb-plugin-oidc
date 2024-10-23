@@ -1,5 +1,5 @@
 {
-  "id": "nodebb-plugin-fusionauth-oidc",
+  "id": "nodebb-plugin-kooky99-oidc",
   "name": "OpenID Connect Plugin for NodeBB",
   "description": "Authenticate to FusionAuth or any OpenID Connect identity provider.",
   "url": "https://github.com/kooky99/nodebb-plugin-oidc",
